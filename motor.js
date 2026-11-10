@@ -1,9 +1,9 @@
-// Motor da Busca de MC para o navegador. Mesmas regras de src/mc-core.cjs (app de desktop),
+// Motor da Busca de MC para o navegador. Mesmas regras do app de desktop,
 // mas trabalhando sobre a base já carregada na memória: [[codigo, descricao, ncm], ...].
 (function (raiz) {
   'use strict';
 
-  // REGRA FIXA: POS.IPI / NCM -> CÓDIGO MC (manter igual a src/mc-core.cjs)
+  // REGRA FIXA: POS.IPI / NCM -> CÓDIGO MC
   const MAPA_NCM_MC = {
     '60062100': 'MC00001113',
     '60062400': 'MC00001114',

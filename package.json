@@ -1,48 +1,10 @@
 {
   "name": "busca-mc",
-  "productName": "Busca de MC",
-  "version": "1.1.0",
-  "description": "Consulta de produtos por MC - Grupo Quatro K",
-  "author": "Grupo Quatro K",
+  "version": "2.0.0",
+  "description": "Busca de MC - Grupo Quatro K (site)",
   "private": true,
-  "main": "src/main.cjs",
   "scripts": {
-    "start": "electron .",
-    "test": "node --test test/motor.test.cjs test/web.test.cjs",
-    "dist": "electron-builder --win --publish never"
-  },
-  "devDependencies": {
-    "electron": "33.2.1",
-    "electron-builder": "25.1.8"
-  },
-  "build": {
-    "appId": "br.com.quatrok.buscamc",
-    "productName": "Busca de MC",
-    "asar": false,
-    "files": [
-      "src/**/*",
-      "package.json",
-      "!src/dados/**"
-    ],
-    "directories": {
-      "output": "dist"
-    },
-    "electronLanguages": [
-      "pt-BR",
-      "en-US"
-    ],
-    "win": {
-      "target": [
-        {
-          "target": "zip",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
-      "icon": "build/icon.ico",
-      "executableName": "BuscaMC",
-      "artifactName": "BuscaMC-${version}-win-x64.${ext}"
-    }
+    "test": "node --test test/site.test.cjs",
+    "base": "node tools/base.cjs"
   }
 }

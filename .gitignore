@@ -1,10 +1,6 @@
 node_modules/
-dist/
 
-# Dados locais: NUNCA versionar (senha do Protheus e base de produtos da empresa)
-dados/
-# exceção: base do site, que é publicada CIFRADA (ver web/cofre.js)
-!web/dados/
-config.json
+# Nunca versionar: base de produtos em texto claro e configurações com senha
 produtos_cache.json
+config.json
 *.log

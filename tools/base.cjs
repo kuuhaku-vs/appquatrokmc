@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// Administra a base cifrada do site (web/dados/base.bin e web/dados/usuarios.json).
+// Administra a base cifrada do site (dados/base.bin e dados/usuarios.json).
 //
 //   node tools/base.cjs criar     <produtos_cache.json>   cria a base com uma chave nova e o primeiro usuário
 //   node tools/base.cjs atualizar <produtos_cache.json>   troca os produtos, mantendo usuários e senhas
@@ -10,14 +10,14 @@
 // "atualizar", "usuario" e "remover" pedem o login de um usuário que já existe.
 // Usuário e senha podem vir das variáveis MC_USUARIO / MC_SENHA (e MC_NOVO_USUARIO / MC_NOVA_SENHA).
 // produtos_cache.json é o arquivo da pasta "dados" do app de desktop.
-// Depois de rodar, envie web/dados/* para a branch main: o GitHub Pages republica o site.
+// Depois de rodar, envie dados/* para a branch main: o GitHub Pages republica o site.
 
 const fs = require('node:fs');
 const path = require('node:path');
 const readline = require('node:readline');
-const cofre = require('../web/cofre.js');
+const cofre = require('../cofre.js');
 
-const DADOS = path.join(__dirname, '..', 'web', 'dados');
+const DADOS = path.join(__dirname, '..', 'dados');
 const ARQ_BASE = path.join(DADOS, 'base.bin');
 const ARQ_USUARIOS = path.join(DADOS, 'usuarios.json');
 

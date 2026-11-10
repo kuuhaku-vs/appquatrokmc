@@ -5,7 +5,7 @@
 //   chave da base    = AES-GCM(chave do usuário).decifrar(entrada do usuário em usuarios.json)
 //   base             = gunzip(AES-GCM(chave da base).decifrar(base.bin))
 //
-// Usado pelo navegador (web/app.js) e pelo Node (tools/base.cjs e testes).
+// Usado pelo navegador (app.js) e pelo Node (tools/base.cjs e testes).
 (function (raiz) {
   'use strict';
   const cripto = raiz.crypto;
