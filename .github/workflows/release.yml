@@ -1,0 +1,50 @@
+name: Gerar aplicativo
+
+# Gera o aplicativo portátil para Windows.
+# - Ao enviar uma tag "v*" (ex.: v1.1.0): publica o ZIP em Releases.
+# - Manualmente (Actions > Gerar aplicativo > Run workflow): só gera o ZIP como artefato.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependências
+        run: npm install --no-audit --no-fund
+
+      - name: Testes do motor de busca
+        run: npm test
+
+      - name: Empacotar (Windows x64, portátil)
+        run: npm run dist
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BuscaMC-win-x64
+          path: dist/*.zip
+          if-no-files-found: error
+
+      - name: Publicar em Releases
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+          generate_release_notes: true
+          body: |
+            **Como usar:** baixe o arquivo `BuscaMC-...-win-x64.zip`, extraia a pasta e abra `BuscaMC.exe`.
+            Não precisa instalar nem de administrador. Na primeira abertura, preencha `dados\config.json`
+            (veja o README) ou copie a pasta `dados` de uma instalação anterior.

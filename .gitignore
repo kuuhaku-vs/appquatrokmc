@@ -1,0 +1,8 @@
+node_modules/
+dist/
+
+# Dados locais: NUNCA versionar (senha do Protheus e base de produtos da empresa)
+dados/
+config.json
+produtos_cache.json
+*.log

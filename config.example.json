@@ -1,0 +1,8 @@
+{
+  "protheus": {
+    "url": "http://SERVIDOR:PORTA",
+    "usuario": "",
+    "senha": ""
+  },
+  "atualizarMinutos": 30
+}
