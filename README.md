@@ -21,7 +21,7 @@ node tools/base.cjs remover                          # remove usuário
 node tools/base.cjs atualizar caminho/produtos_cache.json   # troca os produtos, mantendo usuários
 ```
 
-Depois envie `web/dados/*` para a branch `main`; o site é republicado sozinho. Use senhas com 12+ caracteres: o arquivo cifrado é público, então a proteção é tão forte quanto a senha.
+Depois envie `web/dados/*` para a branch `main`; o GitHub Pages republica o site sozinho em cerca de um minuto. Use senhas com 12+ caracteres: o arquivo cifrado é público, então a proteção é tão forte quanto a senha.
 
 ## Baixar o app de desktop
 
@@ -67,6 +67,7 @@ Este repositório **não contém** a senha do Protheus nem a base de produtos. D
 | `src/mc-core.cjs` | Motor: cache, regras NCM → MC, busca inteligente, consulta ao Protheus |
 | `src/index.html` | Tela |
 | `dados/` (ao lado do `.exe`) | `config.json`, `produtos_cache.json`, `busca_mc.log` |
+| `index.html` (raiz) | Só redireciona o endereço do site para `web/` |
 | `web/` | Versão web (GitHub Pages): tela, login (`cofre.js`), motor (`motor.js`) e base cifrada (`dados/`) |
 | `tools/base.cjs` | Administra usuários e a base cifrada do site |
 

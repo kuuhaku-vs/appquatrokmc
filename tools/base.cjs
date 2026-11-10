@@ -10,7 +10,7 @@
 // "atualizar", "usuario" e "remover" pedem o login de um usuário que já existe.
 // Usuário e senha podem vir das variáveis MC_USUARIO / MC_SENHA (e MC_NOVO_USUARIO / MC_NOVA_SENHA).
 // produtos_cache.json é o arquivo da pasta "dados" do app de desktop.
-// Depois de rodar, envie web/dados/* para a branch main: o site é atualizado sozinho.
+// Depois de rodar, envie web/dados/* para a branch main: o GitHub Pages republica o site.
 
 const fs = require('node:fs');
 const path = require('node:path');
