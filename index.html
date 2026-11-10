@@ -145,6 +145,58 @@ html,body{background:#edf5ff!important;color:#153b61!important;font-family:"Sego
 .ia-card ol{margin:0 0 18px;padding-left:20px;font-size:13px;line-height:1.6;color:#41607c}
 .ia-card ol b{color:#10365d}
 @media (display-mode: standalone){#btnInstalar,#lgInstalar{display:none!important}}
+/* ===== Layout para celular ===== */
+@media (max-width:640px){
+html,body{height:100%;height:100dvh}
+body{background:#eef4fa}
+.head{height:calc(58px + env(safe-area-inset-top))!important;flex-basis:calc(58px + env(safe-area-inset-top))!important;padding:env(safe-area-inset-top) 14px 0!important;gap:10px!important;position:relative;z-index:5}
+.head .brand{gap:10px}
+.head .brand img{height:34px!important;width:34px!important;border-radius:9px}
+.head .module{display:block!important;border-left:0!important;padding-left:0!important}
+.head .module b{font-size:15px;color:#10365d}
+.head .module span{display:none}
+.head button{padding:8px 12px!important;font-size:13px!important;border-radius:10px!important;min-height:38px}
+.page{padding:0 0 calc(16px + env(safe-area-inset-bottom))!important;-webkit-overflow-scrolling:touch}
+.wrap{display:flex!important;flex-direction:column;gap:0!important;max-width:none!important;margin:0!important;width:100%!important}
+.top{display:none!important}
+.search{width:auto!important;position:sticky;top:0;z-index:4;margin:0!important;min-height:0!important;border-radius:0 0 18px 18px!important;border:0!important;border-bottom:1px solid #dbe7f1!important;padding:12px 14px 14px!important;box-shadow:0 6px 16px rgba(23,66,103,.08)!important;background:#fff!important}
+.search:before,.search:after{display:none!important}
+.search-hint,.search-status,.tools{display:none!important}
+.search-row{flex-direction:row!important;flex-wrap:wrap;gap:8px!important}
+.code-field{flex:1 1 100%;height:54px!important;border-radius:14px!important}
+.code-field input{font-size:18px!important;letter-spacing:.5px;font-weight:600}
+.code-field .search-icon{flex-basis:42px}
+.clear-code{flex-basis:46px!important;width:46px!important;font-size:26px!important}
+#btnBuscar,.search-row .smart-search{flex:1 1 0;min-width:0;height:48px!important;margin:0!important;border-radius:12px!important;font-size:15px!important;justify-content:center;display:inline-flex;align-items:center;gap:8px;padding:0 10px!important}
+.search-row .smart-search{font-size:14px!important}
+.search-row .smart-search span{width:22px;height:22px;font-size:17px}
+.result{width:auto!important;align-self:stretch;margin:12px 12px 0!important;min-height:0!important;max-height:none!important;border-radius:16px!important;padding:18px 16px!important}
+.result:before{display:none!important}
+.result .label{font-size:11px;margin-bottom:10px}
+.mc-box{padding:16px!important;min-height:0!important;text-align:center;gap:6px}
+.mc-box small{font-size:11px!important;letter-spacing:1.4px}
+.mc-box b{font-size:34px!important;letter-spacing:1px;word-break:break-all;margin:2px 0 6px}
+.mc-box button{position:static!important;transform:none!important;width:100%!important;height:48px!important;margin-top:6px;border-radius:12px!important;background:linear-gradient(100deg,#1168b8,#07539a)!important;border:0!important;color:#fff!important;font-size:0!important}
+.mc-box button:before{content:"Copiar código MC";font-size:15px;font-weight:700}
+.result-status{margin-top:16px!important;padding-top:12px!important;font-size:12px!important}
+.result button[data-code]{box-sizing:border-box;border:1px solid #d6e3ee!important;background:#f8fbfd!important;display:flex!important;flex-direction:column;align-items:flex-start;gap:3px;width:100%;text-align:left;margin:8px 0 0!important;padding:13px 14px!important;border-radius:12px!important;min-height:56px}
+.result button[data-code] b{font-size:15px}
+.result button[data-code] span{font-size:12px;color:#5c7891;white-space:normal}
+.empty{padding:22px 8px!important}
+.empty .ico{font-size:30px!important}
+.empty strong{font-size:15px!important}
+.empty span{font-size:13px}
+.history{display:flex!important;width:auto!important;margin:12px 12px 0!important}
+.history button{width:100%;height:46px;font-size:14px!important;border-radius:12px!important;background:#fff!important}
+.footer-line{height:auto!important;min-height:32px;padding:6px 14px calc(6px + env(safe-area-inset-bottom))!important;font-size:11px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block!important}
+.footer-line #footerInfo{overflow:hidden;text-overflow:ellipsis}
+.toast{left:12px!important;right:12px;transform:none!important;bottom:calc(48px + env(safe-area-inset-bottom))!important;font-size:14px!important;padding:12px 14px!important;border-radius:12px!important;text-align:center}
+.lg-overlay{padding:16px!important;align-items:flex-start;padding-top:calc(24px + env(safe-area-inset-top))!important;overflow:auto}
+.lg-card{padding:24px 20px 20px!important}
+.lg-campo input{font-size:16px!important}
+}
+@media (max-width:380px){.search-row .smart-search span{display:none!important}.search-row .smart-search{font-size:13px!important}}
+@media (max-width:360px){.head .module{display:none!important}}
 </style>
 </head>
 <body>
@@ -216,7 +268,7 @@ html,body{background:#edf5ff!important;color:#153b61!important;font-family:"Sego
 <header class="head"><div class="brand"><img src="logo.png" alt="Quatro K"><div class="module"><b>Busca de MC</b><span>Consulta de produtos</span></div></div><div class="spacer"></div><button id="btnInstalar" class="hidden" type="button" title="Instalar a Busca de MC como aplicativo neste dispositivo">⤓ Instalar app</button><button id="btnSair" title="Sair e esquecer o login neste navegador">Sair</button></header>
 <main class="page"><div class="wrap">
 <section class="top"><div><div class="eyebrow">CONSULTA DE PRODUTOS</div><h1>Consulta de Produtos</h1><p>Informe o código do produto para localizar o código genérico.</p></div><div class="top-actions"><button class="smart-search" id="btnInteligente" type="button"><span aria-hidden="true">⌕</span> Busca inteligente</button><div class="status"><span class="dot"></span><span id="status">Sistema conectado</span></div></div></section>
-<section class="search"><div class="search-row"><div class="code-field"><span class="search-icon" aria-hidden="true">⌕</span><input id="codigo" maxlength="100" autocomplete="off" placeholder="Ex.: 10M1410400010" aria-label="Código do produto"><button class="clear-code" id="btnLimpar" type="button" title="Limpar código" aria-label="Limpar código">×</button></div><button class="btn primary" id="btnBuscar" type="button">Consultar <span aria-hidden="true">⟶</span></button></div><div class="search-hint">Exemplo rápido: <b>10M1410400010</b><span>·</span> Pressione Enter para consultar</div><div class="tools"><span style="margin-left:auto;color:#6884ad;font-size:10px;align-self:center" id="baseInfo"></span></div><div class="search-status"><span class="status-check">✓</span> Consulta conectada à base interna</div></section>
+<section class="search"><div class="search-row"><div class="code-field"><span class="search-icon" aria-hidden="true">⌕</span><input id="codigo" maxlength="100" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="search" placeholder="Ex.: 10M1410400010" aria-label="Código do produto"><button class="clear-code" id="btnLimpar" type="button" title="Limpar código" aria-label="Limpar código">×</button></div><button class="btn primary" id="btnBuscar" type="button">Consultar <span aria-hidden="true">⟶</span></button></div><div class="search-hint">Exemplo rápido: <b>10M1410400010</b><span>·</span> Pressione Enter para consultar</div><div class="tools"><span style="margin-left:auto;color:#6884ad;font-size:10px;align-self:center" id="baseInfo"></span></div><div class="search-status"><span class="status-check">✓</span> Consulta conectada à base interna</div></section>
 <section class="result" id="resultado"><div class="empty"><div class="ico">⌕</div><strong>Pronto para consultar</strong><span>Digite o código do produto acima.</span></div></section>
 <div class="history"><button class="btn" id="btnHistorico">Histórico de consultas</button></div>
 </div></main><div class="footer-line"><span class="dot"></span><span id="footerInfo">Base local · conectando...</span></div><div class="toast" id="toast"></div>
@@ -246,5 +298,31 @@ $('btnHistorico').onclick=()=>{const h=JSON.parse(localStorage.getItem('mc_hist'
 statusBase().catch(()=>{});
 setInterval(()=>statusBase().catch(()=>{}), 3000);
 input.focus();
+</script>
+<script>
+// Ajustes para celular: botão de busca inteligente junto do campo, rolagem até o resultado e mensagens de toque.
+(() => {
+  const mq = window.matchMedia('(max-width:640px)');
+  const smart = document.getElementById('btnInteligente');
+  const lugarOriginal = smart && smart.parentNode;
+  const proximo = smart && smart.nextSibling;
+  const linha = document.querySelector('.search-row');
+  const ajustar = () => {
+    if (!smart || !linha) return;
+    if (mq.matches) { if (smart.parentNode !== linha) linha.appendChild(smart); }
+    else if (smart.parentNode !== lugarOriginal) lugarOriginal.insertBefore(smart, proximo);
+  };
+  ajustar();
+  (mq.addEventListener ? mq.addEventListener('change', ajustar) : mq.addListener(ajustar));
+  const toque = window.matchMedia('(pointer:coarse)').matches;
+  if (toque && typeof msg === 'function') {
+    const original = msg;
+    msg = (t) => original(String(t).replace(/\s*\(Ctrl\+V para colar\)/, '').replace(/Pode colar com Ctrl\+V\./, 'Toque e segure para colar.'));
+  }
+  // Ao chegar um resultado, volta ao topo para que ele apareça logo abaixo do campo.
+  const res = document.getElementById('resultado');
+  const page = document.querySelector('.page');
+  if (res && page) new MutationObserver(() => { if (mq.matches) page.scrollTo({ top: 0, behavior: 'smooth' }); }).observe(res, { childList: true });
+})();
 </script>
 </body></html>

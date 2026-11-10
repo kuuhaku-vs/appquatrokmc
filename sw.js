@@ -1,6 +1,6 @@
 // Permite instalar o site como aplicativo e usar sem internet depois do primeiro acesso.
 // Estratégia: rede primeiro (sempre a versão mais nova); se estiver offline, usa a cópia guardada.
-const CACHE = 'busca-mc-v2';
+const CACHE = 'busca-mc-v3';
 const ARQUIVOS = ['./', 'index.html', 'app.js', 'motor.js', 'cofre.js', 'logo.png', 'mc-background.jpeg',
   'icon-192.png', 'icon-512.png', 'icon-maskable-192.png', 'icon-maskable-512.png', 'apple-touch-icon.png',
   'manifest.webmanifest', 'dados/usuarios.json', 'dados/base.bin'];
