@@ -1,0 +1,16 @@
+{
+  "v": 1,
+  "kdf": {
+    "nome": "PBKDF2",
+    "hash": "SHA-256",
+    "iteracoes": 600000
+  },
+  "usuarios": [
+    {
+      "id": "63c9fb86bc394fac7a2e2be9df770ca2",
+      "sal": "2h8yHlo2YOqGDZRQbVEOPw==",
+      "iv": "gxfeDRJzCmt2k+xv",
+      "chave": "NM2vI8PrvzWAHohTcR1ughyJBQJgj0/Tl/tbxKudcs0N9TebT/BtzVRLskK81A1X"
+    }
+  ]
+}

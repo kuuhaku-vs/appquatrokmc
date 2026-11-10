@@ -3,6 +3,8 @@ dist/
 
 # Dados locais: NUNCA versionar (senha do Protheus e base de produtos da empresa)
 dados/
+# exceção: base do site, que é publicada CIFRADA (ver web/cofre.js)
+!web/dados/
 config.json
 produtos_cache.json
 *.log
