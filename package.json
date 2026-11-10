@@ -8,7 +8,7 @@
   "main": "src/main.cjs",
   "scripts": {
     "start": "electron .",
-    "test": "node --test test/motor.test.cjs",
+    "test": "node --test test/motor.test.cjs test/web.test.cjs",
     "dist": "electron-builder --win --publish never"
   },
   "devDependencies": {

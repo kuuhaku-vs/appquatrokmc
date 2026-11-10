@@ -1,8 +1,31 @@
 # Busca de MC — Grupo Quatro K
 
-Aplicativo de desktop (Windows) para consultar o **código MC** de um produto a partir do código de 12 caracteres, com busca inteligente por trecho de código ou de descrição. Extraído do módulo "Busca de MC" do NØVA; o motor roda dentro do próprio app, **sem Python**.
+Aplicativo (web e desktop Windows) para consultar o **código MC** de um produto a partir do código de 12 caracteres, com busca inteligente por trecho de código ou de descrição. Extraído do módulo "Busca de MC" do NØVA; o motor roda dentro do próprio app, **sem Python**.
 
-## Baixar e usar
+## Usar pelo navegador (sem instalar nada)
+
+**https://kuuhaku-vs.github.io/appquatrokmc/**
+
+Abra o endereço, entre com usuário e senha e consulte. Funciona em computador e celular. No Chrome ou Edge dá para **instalar como aplicativo** (ícone "Instalar" na barra de endereço): ele ganha janela e atalho próprios e continua funcionando sem internet depois do primeiro acesso.
+
+- A base de produtos do site fica **cifrada** (AES-256); só abre com usuário e senha. Não há servidor: a senha nunca sai do navegador.
+- O site usa uma cópia da base gerada a partir do `produtos_cache.json` do app de desktop. Ele não fala com o Protheus (o navegador não alcança a rede interna); para atualizar, veja "Atualizar a base do site".
+
+### Usuários e base do site
+
+Precisa de [Node.js](https://nodejs.org) 20+ e de uma cópia deste repositório.
+
+```bash
+node tools/base.cjs usuario                          # cria usuário ou troca senha (pede um login existente)
+node tools/base.cjs remover                          # remove usuário
+node tools/base.cjs atualizar caminho/produtos_cache.json   # troca os produtos, mantendo usuários
+```
+
+Depois envie `web/dados/*` para a branch `main`; o site é republicado sozinho. Use senhas com 12+ caracteres: o arquivo cifrado é público, então a proteção é tão forte quanto a senha.
+
+## Baixar o app de desktop
+
+
 
 1. Abra a página **[Releases](../../releases/latest)** e baixe `BuscaMC-x.y.z-win-x64.zip`.
 2. Extraia a pasta para um local seu (Área de Trabalho, Documentos…). Não execute de dentro do ZIP.
@@ -44,6 +67,8 @@ Este repositório **não contém** a senha do Protheus nem a base de produtos. D
 | `src/mc-core.cjs` | Motor: cache, regras NCM → MC, busca inteligente, consulta ao Protheus |
 | `src/index.html` | Tela |
 | `dados/` (ao lado do `.exe`) | `config.json`, `produtos_cache.json`, `busca_mc.log` |
+| `web/` | Versão web (GitHub Pages): tela, login (`cofre.js`), motor (`motor.js`) e base cifrada (`dados/`) |
+| `tools/base.cjs` | Administra usuários e a base cifrada do site |
 
 ## Desenvolvimento
 
