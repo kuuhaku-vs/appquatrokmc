@@ -61,8 +61,10 @@ async function login(usuarios) {
 }
 
 function validarSenha(senha) {
-  if (String(senha).length < 12) {
-    throw new Error('Use uma senha com pelo menos 12 caracteres: a base cifrada é pública e senha curta pode ser quebrada.');
+  const n = String(senha).length;
+  if (n < 8) throw new Error('A senha precisa ter pelo menos 8 caracteres.');
+  if (n < 12) {
+    console.warn('AVISO: senha com menos de 12 caracteres. A base cifrada é pública; senhas curtas ou com palavras comuns podem ser descobertas por tentativa.');
   }
 }
 
@@ -74,7 +76,7 @@ async function main() {
     }
     const base = lerProdutos(arg);
     const usuario = await pedir('MC_NOVO_USUARIO', 'Primeiro usuário: ');
-    const senha = await pedir('MC_NOVA_SENHA', 'Senha (mín. 12 caracteres): ', true);
+    const senha = await pedir('MC_NOVA_SENHA', 'Senha (recomendado 12+ caracteres): ', true);
     validarSenha(senha);
     const chave = cofre.novaChave();
     fs.mkdirSync(DADOS, { recursive: true });
@@ -90,7 +92,7 @@ async function main() {
     const usuarios = lerUsuarios();
     const chave = await login(usuarios);
     const usuario = await pedir('MC_NOVO_USUARIO', 'Usuário a criar/alterar: ');
-    const senha = await pedir('MC_NOVA_SENHA', 'Nova senha (mín. 12 caracteres): ', true);
+    const senha = await pedir('MC_NOVA_SENHA', 'Nova senha (recomendado 12+ caracteres): ', true);
     validarSenha(senha);
     const entrada = await cofre.entradaUsuario(chave, usuario, senha, usuarios.kdf.iteracoes);
     usuarios.usuarios = usuarios.usuarios.filter((u) => u.id !== entrada.id).concat(entrada);

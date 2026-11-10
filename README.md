@@ -10,6 +10,7 @@ Entre com usuário e senha e consulte. Funciona em computador e celular. No Chro
 
 - Só entram na base os produtos com código de **exatamente 12 caracteres**.
 - O MC vem de uma tabela fixa **Pos.IPI/NCM → MC** (`MAPA_NCM_MC` em [`motor.js`](motor.js)).
+- O que é digitado no campo de busca vira maiúsculas automaticamente.
 - Ao encontrar o MC, ele é copiado automaticamente e o código digitado fica selecionado, pronto para a próxima consulta.
 - A base de produtos (`dados/base.bin`) é publicada **cifrada** (AES-256) e só abre com usuário e senha. Não há servidor: a senha nunca sai do navegador.
 - O site **não consulta o Protheus**: um site público não alcança o servidor da rede interna. Ele usa uma cópia da base, atualizada como descrito abaixo.
@@ -36,6 +37,6 @@ node tools/base.cjs atualizar caminho/produtos_cache.json   # troca os produtos,
 
 `produtos_cache.json` é o arquivo gerado pelo app de desktop a partir do Protheus. Depois de rodar, envie a pasta `dados/` para a branch `main`; o GitHub Pages republica o site em cerca de um minuto.
 
-Use senhas com 12 ou mais caracteres e **não reutilize a senha do Protheus**: o arquivo cifrado é público, então a proteção é tão forte quanto a senha.
+Prefira senhas com 12 ou mais caracteres, sem palavras comuns, e **não reutilize a senha do Protheus**: o arquivo cifrado é público, então a proteção é tão forte quanto a senha.
 
 `npm test` roda os testes das regras de busca e da cifra.
