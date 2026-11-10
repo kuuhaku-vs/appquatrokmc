@@ -112,4 +112,72 @@
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   }
+
+  // ---- Instalar como aplicativo ----
+  // Chrome/Edge/Samsung (Android e computador): usa o aviso nativo de instalação.
+  // iPhone/iPad e navegadores sem aviso nativo: mostra o passo a passo manual.
+  const jaInstalado = () =>
+    window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const ua = navigator.userAgent;
+  const ehIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const ehAndroid = /Android/i.test(ua);
+  let avisoNativo = null;
+
+  const botoesInstalar = () => [$('btnInstalar'), $('lgInstalar')].filter(Boolean);
+  const mostrarBotoes = (sim) => botoesInstalar().forEach((b) => b.classList.toggle('hidden', !sim));
+
+  function passoAPasso() {
+    let passos;
+    if (ehIOS) {
+      passos = /CriOS|FxiOS|EdgiOS/.test(ua)
+        ? ['Toque no botão <b>Compartilhar</b> (quadrado com seta ↑) na barra de endereço.',
+           'Escolha <b>Adicionar à Tela de Início</b>.',
+           'Toque em <b>Adicionar</b>. Se a opção não aparecer, abra este site no <b>Safari</b>.']
+        : ['Toque no botão <b>Compartilhar</b> (quadrado com seta ↑) na barra do Safari.',
+           'Role a lista e toque em <b>Adicionar à Tela de Início</b>.',
+           'Toque em <b>Adicionar</b>. O ícone da Busca de MC aparece na tela inicial.'];
+    } else if (ehAndroid) {
+      passos = ['Abra o menu do navegador (<b>⋮</b> no canto superior).',
+        'Toque em <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.',
+        'Confirme. Se não aparecer, abra este site no <b>Chrome</b>.'];
+    } else {
+      passos = ['No <b>Chrome</b> ou <b>Edge</b>, clique no ícone de instalar (<b>⊕</b> ou monitor com seta) no fim da barra de endereço.',
+        'Ou abra o menu <b>⋮</b> / <b>…</b> e escolha <b>Instalar Busca de MC</b> (no Edge: <b>Aplicativos › Instalar este site</b>).',
+        'O Firefox no computador não instala sites; use Chrome ou Edge.'];
+    }
+    $('iaPassos').innerHTML = passos.map((p) => '<li>' + p + '</li>').join('');
+    $('instalarAjuda').classList.remove('hidden');
+  }
+
+  async function instalar() {
+    if (avisoNativo) {
+      const aviso = avisoNativo;
+      avisoNativo = null;
+      aviso.prompt();
+      try {
+        const { outcome } = await aviso.userChoice;
+        if (outcome === 'accepted') mostrarBotoes(false);
+      } catch {}
+      return;
+    }
+    passoAPasso();
+  }
+
+  window.addEventListener('beforeinstallprompt', (ev) => {
+    ev.preventDefault();
+    avisoNativo = ev;
+    if (!jaInstalado()) mostrarBotoes(true);
+  });
+  window.addEventListener('appinstalled', () => { avisoNativo = null; mostrarBotoes(false); });
+
+  function prepararInstalacao() {
+    botoesInstalar().forEach((b) => b.addEventListener('click', instalar));
+    const fechar = () => $('instalarAjuda').classList.add('hidden');
+    $('iaFechar').addEventListener('click', fechar);
+    $('instalarAjuda').addEventListener('click', (ev) => { if (ev.target.id === 'instalarAjuda') fechar(); });
+    // No iPhone/iPad não existe aviso nativo: o botão abre o passo a passo.
+    if (!jaInstalado() && ehIOS) mostrarBotoes(true);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', prepararInstalacao);
+  else prepararInstalacao();
 })();

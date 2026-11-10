@@ -6,7 +6,12 @@
 <meta name="theme-color" content="#07539a">
 <meta name="robots" content="noindex">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Busca de MC">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="application-name" content="Busca de MC">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self';">
 <link rel="icon" href="icon.png"><title>Busca de MC · Grupo Quatro K</title>
 <style>
@@ -129,6 +134,17 @@ html,body{background:#edf5ff!important;color:#153b61!important;font-family:"Sego
 .lg-nota{margin-top:16px;font-size:10px;color:#8497a8;line-height:1.5}
 /* o código é sempre digitado em maiúsculas */
 #codigo{text-transform:uppercase}#codigo::placeholder{text-transform:none}
+/* Instalação como aplicativo */
+.lg-instalar{width:100%;height:42px;margin-top:12px;border:1px solid #cbdde8;border-radius:10px;background:#f5fafd;color:#16436a;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.lg-instalar:hover{background:#eaf3fb;border-color:#9fc0da}
+.ia-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:flex-end;justify-content:center;padding:16px;background:rgba(9,23,47,.45)}
+@media (min-width:600px){.ia-overlay{align-items:center}}
+.ia-card{width:min(400px,100%);background:#fff;border-radius:18px;padding:24px 22px 20px;box-shadow:0 24px 60px rgba(23,66,103,.25);color:#173f66}
+.ia-card img{width:48px;height:48px;border-radius:12px;display:block;margin-bottom:12px}
+.ia-card h2{margin:0 0 10px;font-size:19px;color:#10365d}
+.ia-card ol{margin:0 0 18px;padding-left:20px;font-size:13px;line-height:1.6;color:#41607c}
+.ia-card ol b{color:#10365d}
+@media (display-mode: standalone){#btnInstalar,#lgInstalar{display:none!important}}
 </style>
 </head>
 <body>
@@ -186,9 +202,18 @@ html,body{background:#edf5ff!important;color:#153b61!important;font-family:"Sego
     <button class="lg-entrar" id="loginEntrar" type="submit">Entrar</button>
     <div class="lg-erro hidden" id="loginErro" role="alert"></div>
     <div class="lg-nota">A base de produtos fica cifrada e só é aberta neste navegador com a sua senha.</div>
+    <button class="lg-instalar hidden" id="lgInstalar" type="button">⤓ Instalar como aplicativo</button>
   </form>
 </div>
-<header class="head"><div class="brand"><img src="logo.png" alt="Quatro K"><div class="module"><b>Busca de MC</b><span>Consulta de produtos</span></div></div><div class="spacer"></div><button id="btnSair" title="Sair e esquecer o login neste navegador">Sair</button></header>
+<div id="instalarAjuda" class="ia-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="iaTitulo">
+  <div class="ia-card">
+    <img src="icon-192.png" alt="">
+    <h2 id="iaTitulo">Instalar a Busca de MC</h2>
+    <ol id="iaPassos"></ol>
+    <button class="lg-entrar" id="iaFechar" type="button">Entendi</button>
+  </div>
+</div>
+<header class="head"><div class="brand"><img src="logo.png" alt="Quatro K"><div class="module"><b>Busca de MC</b><span>Consulta de produtos</span></div></div><div class="spacer"></div><button id="btnInstalar" class="hidden" type="button" title="Instalar a Busca de MC como aplicativo neste dispositivo">⤓ Instalar app</button><button id="btnSair" title="Sair e esquecer o login neste navegador">Sair</button></header>
 <main class="page"><div class="wrap">
 <section class="top"><div><div class="eyebrow">CONSULTA DE PRODUTOS</div><h1>Consulta de Produtos</h1><p>Informe o código do produto para localizar o código genérico.</p></div><div class="top-actions"><button class="smart-search" id="btnInteligente" type="button"><span aria-hidden="true">⌕</span> Busca inteligente</button><div class="status"><span class="dot"></span><span id="status">Sistema conectado</span></div></div></section>
 <section class="search"><div class="search-row"><div class="code-field"><span class="search-icon" aria-hidden="true">⌕</span><input id="codigo" maxlength="100" autocomplete="off" placeholder="Ex.: 10M1410400010" aria-label="Código do produto"><button class="clear-code" id="btnLimpar" type="button" title="Limpar código" aria-label="Limpar código">×</button></div><button class="btn primary" id="btnBuscar" type="button">Consultar <span aria-hidden="true">⟶</span></button></div><div class="search-hint">Exemplo rápido: <b>10M1410400010</b><span>·</span> Pressione Enter para consultar</div><div class="tools"><span style="margin-left:auto;color:#6884ad;font-size:10px;align-self:center" id="baseInfo"></span></div><div class="search-status"><span class="status-check">✓</span> Consulta conectada à base interna</div></section>

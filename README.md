@@ -4,7 +4,7 @@ Site para consultar o **código MC** de um produto a partir do código de 12 car
 
 **Abrir: https://kuuhaku-vs.github.io/appquatrokmc/**
 
-Entre com usuário e senha e consulte. Funciona em computador e celular. No Chrome ou Edge dá para **instalar como aplicativo** (ícone "Instalar" na barra de endereço): ganha janela e atalho próprios e funciona sem internet depois do primeiro acesso.
+Entre com usuário e senha e consulte. Funciona em computador e celular. Dá para **instalar como aplicativo** pelo botão **Instalar app** da própria tela (Chrome/Edge no Android e no computador). No iPhone/iPad, o botão mostra o passo a passo: Safari › Compartilhar › **Adicionar à Tela de Início**. Instalado, ganha ícone e janela próprios e funciona sem internet depois do primeiro acesso.
 
 ## Como funciona
 

@@ -1,15 +1,22 @@
 {
+  "id": "./",
   "name": "Busca de MC — Quatro K",
   "short_name": "Busca de MC",
   "description": "Consulta de produtos por MC - Grupo Quatro K",
   "lang": "pt-BR",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
   "background_color": "#edf5ff",
   "theme_color": "#07539a",
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
