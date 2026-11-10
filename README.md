@@ -56,12 +56,7 @@ npm run dist    # gera dist/BuscaMC-<versão>-win-x64.zip (rodar no Windows)
 
 ## Publicar uma nova versão
 
-1. Atualize `"version"` em `package.json`.
-2. Crie e envie a tag correspondente:
+1. Aumente `"version"` em `package.json` (ex.: `1.1.0` → `1.2.0`).
+2. Envie a alteração para a branch `main`.
 
-   ```bash
-   git tag v1.2.0
-   git push origin v1.2.0
-   ```
-
-O GitHub Actions ([`release.yml`](.github/workflows/release.yml)) roda os testes, empacota o app no Windows e publica o ZIP em Releases. Também dá para gerar o ZIP sem publicar em **Actions → Gerar aplicativo → Run workflow**.
+O GitHub Actions ([`release.yml`](.github/workflows/release.yml)) roda os testes, empacota o app no Windows e cria a Release `v<versão>` com o ZIP anexado. Se a versão já existir em Releases, ele só gera o ZIP como artefato da execução (aba **Actions**).
